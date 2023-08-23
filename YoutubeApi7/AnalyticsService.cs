@@ -1,88 +1,101 @@
 ﻿using System.Security.Principal;
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.YouTube.v3.Data;
 using Google.Apis.YouTubeAnalytics.v2;
 using Google.Apis.YouTubeAnalytics.v2.Data;
 
 namespace YoutubeApi7;
 
+// класс метрик. географию, возраст и прочие подробности пока почти везде опускаю,
+// потому что их можно применить только к определенным метрикам - нужно уточнение, к каким
 public class AnalyticsService
 {
     private YouTubeAnalyticsService _service;
-    private string _threeMonthsAgo;
-    private string _dateNow;
+    private ReportsResource.QueryRequest _query;
 
-    public AnalyticsService(YouTubeAnalyticsService service)
+    private string _threeMonthsAgo;
+    
+    public AnalyticsService(YouTubeAnalyticsService service, UserCredential credential)
     {
         _service = service;
-        _threeMonthsAgo = DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
-        _dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+        
+        string threeMonthsAgo = "2012-01-02"; // DateTime.Now.AddMonths(-3).ToString("yyyy-MM-dd");
+        string dateNow = DateTime.Now.ToString("yyyy-MM-dd");
+        
+        _threeMonthsAgo = threeMonthsAgo;
+        
+        // постоянные значения запроса
+        _query = _service.Reports.Query();
+        _query.Credential = credential;
+        _query.StartDate = threeMonthsAgo;
+        _query.EndDate = DateTime.Now.ToString("yyyy-MM-dd");
+        _query.Ids = "channel==MINE";
+        _query.MaxResults = 250;
+
     }
 
-    // продолжительность просмотра, дизлайки, лайки, просмотры, комменты по странам
+    // базовые метрики
     public async Task<QueryResponse> GetBasicReport()
     {
-        var query = _service.Reports.Query();
-        query.StartDate = _threeMonthsAgo;
-        query.EndDate = _dateNow;
-        query.Dimensions = "country";
-        query.Metrics = "views,comments,likes,dislikes,estimatedMinutesWatched,averageViewDuration";
-        query.Ids = "channel==MINE";
-        var response = await query.ExecuteAsync();
+        _query.Metrics = "views,comments,likes,dislikes,averageViewDuration,";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
         return response;
     }
     
     // Репорт просмотров по городам
     public async Task<QueryResponse> GetViewsReportByCity()
     {
-        var query = _service.Reports.Query();
-        query.StartDate = _threeMonthsAgo;
-        query.EndDate = _dateNow; 
-        query.Dimensions = "city";
-        query.MaxResults = 250;
-        query.Sort = "-views";
-        query.Metrics = "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage";
-        query.Ids = "channel==MINE";
-        var response = await query.ExecuteAsync();
+        _query.Dimensions = "city";
+        _query.Sort = "-views";
+        _query.Metrics = "views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage," +
+                         "videosAddedToPlaylists";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
         return response;
     }
 
     // Возраст, пол
     public async Task<QueryResponse> GetDemographicReport()
     {
-        var query = _service.Reports.Query();
-        query.StartDate = _threeMonthsAgo;
-        query.EndDate = _dateNow;
-        query.Dimensions = "ageGroup,gender";
-        query.Metrics = "viewerPercentage";
-        query.Ids = "channel==MINE";
-        var response = await query.ExecuteAsync();
+        _query.Dimensions = "ageGroup,gender";
+        _query.Metrics = "viewerPercentage";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
         return response;
     }
-
-    // репосты
-    public async Task<QueryResponse> GetShares()
-    {
-        var query = _service.Reports.Query();
-        query.StartDate = _threeMonthsAgo;
-        query.EndDate = _dateNow;
-        query.Dimensions = "ageGroup,gender";
-        query.Metrics = "viewerPercentage";
-        query.Ids = "channel==MINE";
-        var response = await query.ExecuteAsync();
-        return response;
-    }
+    
     
     // ОС и тип девайса
     public async Task<QueryResponse> GetDeviceAndOs()
     {
-        var query = _service.Reports.Query();
-        query.StartDate = _threeMonthsAgo;
-        query.EndDate = _dateNow;
-        query.Dimensions = "deviceType,operatingSystem,liveOrOnDemand,subscribedStatus";
-        query.Metrics = "views,estimatedMinutesWatched";
-        query.Ids = "channel==MINE";
-        var response = await query.ExecuteAsync();
+        _query.Dimensions = "deviceType,operatingSystem,liveOrOnDemand,subscribedStatus";
+        _query.Metrics = "views,estimatedMinutesWatched";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
         return response;
+    }
+    
+    // подписчики и отписчики за месяц
+    public async Task<QueryResponse> GetMonthSubsDynamic()
+    {
+        _query.StartDate = DateTime.Now.AddMonths(-1).ToString("yyyy-MMMM-dd");
+        _query.EndDate = DateTime.Now.ToString("yyyy-MM-dd");
+        _query.Metrics = "subscribersGained,subscribersLost";
+        var response = await _query.ExecuteAsync();
+        
+        ClearQuery();
+        _query.StartDate = _threeMonthsAgo;
+        
+        return response;
+    }
+
+    private void ClearQuery()
+    {
+        _query.Dimensions = null;
+        _query.Metrics = null;
+        _query.Sort = null;
+        _query.Filters = null;
     }
     
 

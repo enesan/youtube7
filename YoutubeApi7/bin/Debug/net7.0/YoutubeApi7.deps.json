@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "YoutubeApi7/1.0.0": {
         "dependencies": {
+          "Google.Apis.Auth": "1.61.0",
           "Google.Apis.YouTube.v3": "1.61.0.3151",
           "Google.Apis.YouTubeAnalytics.v2": "1.61.0.3106",
           "Google.Apis.YouTubeReporting.v1": "1.61.0.3106"

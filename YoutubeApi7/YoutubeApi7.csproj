@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Google.Apis.Auth" Version="1.61.0" />
       <PackageReference Include="Google.Apis.YouTube.v3" Version="1.61.0.3151" />
       <PackageReference Include="Google.Apis.YouTubeAnalytics.v2" Version="1.61.0.3106" />
       <PackageReference Include="Google.Apis.YouTubeReporting.v1" Version="1.61.0.3106" />

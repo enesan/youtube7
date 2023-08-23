@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Threading.Channels;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTubeAnalytics.v2;
@@ -33,17 +34,23 @@ ClientSecrets secrets = new ClientSecrets()
 
 YouTubeAnalyticsService youTubeAnalyticsService = new();
 
-var userCredential = await UserAuthService.AuthorizeUser(secrets, scopes, "sdssasdsss");
+var userCredential = await UserAuthService.AuthorizeUser(secrets, scopes, "sdsвsaываsdsss");
+
+
 
 Console.WriteLine("Access token: " + userCredential.Token.AccessToken);
 
-AnalyticsService analyticsService = new AnalyticsService(youTubeAnalyticsService);
-var report = await analyticsService.GetReport("MINE");
+AnalyticsService analyticsService = new AnalyticsService(youTubeAnalyticsService, userCredential);
+var report = await analyticsService.GetBasicReport();
 
-foreach (var a in report)
+foreach (var a in report.Rows)
 {
     foreach (var b in a)
     {
         Console.WriteLine(b);
     }
 }
+
+report = await analyticsService.GetDeviceAndOs();
+
+Console.WriteLine(report);
