@@ -33,24 +33,18 @@ ClientSecrets secrets = new ClientSecrets()
 };
 
 YouTubeAnalyticsService youTubeAnalyticsService = new();
+YouTubeService yt = new();
 
-var userCredential = await UserAuthService.AuthorizeUser(secrets, scopes, "sdsвsaываsdsss");
+var userCredential = await UserAuthService.AuthorizeUser(secrets, scopes, "sdsвsuyhaываsdsss");
 
 
 
 Console.WriteLine("Access token: " + userCredential.Token.AccessToken);
 
 AnalyticsService analyticsService = new AnalyticsService(youTubeAnalyticsService, userCredential);
-var report = await analyticsService.GetBasicReport();
+DataApiService dataService = new(yt, API_KEY);
 
-foreach (var a in report.Rows)
-{
-    foreach (var b in a)
-    {
-        Console.WriteLine(b);
-    }
-}
+MetricsCounterService mc = new(analyticsService,dataService);
 
-report = await analyticsService.GetDeviceAndOs();
+Console.WriteLine(await mc.GetMeanViewsAsync());
 
-Console.WriteLine(report);

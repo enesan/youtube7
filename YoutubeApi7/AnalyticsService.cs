@@ -5,7 +5,9 @@ using Google.Apis.YouTubeAnalytics.v2;
 using Google.Apis.YouTubeAnalytics.v2.Data;
 
 namespace YoutubeApi7;
-
+/// <summary>
+/// Отчеты за последние три месяца, кроме GetMonthSubsDynamic()
+/// </summary>
 // класс метрик. географию, возраст и прочие подробности пока почти везде опускаю,
 // потому что их можно применить только к определенным метрикам - нужно уточнение, к каким
 public class AnalyticsService
@@ -35,16 +37,72 @@ public class AnalyticsService
     }
 
     // базовые метрики
-    public async Task<QueryResponse> GetBasicReport()
+    public async Task<long> GetViewsAsync()
     {
-        _query.Metrics = "views,comments,likes,dislikes,averageViewDuration,";
+        _query.Metrics = "views";
         var response = await _query.ExecuteAsync();
         ClearQuery();
-        return response;
+        return (int)((long)response.Rows[0][0]);
     }
     
+    public async Task<long> GetCommentsAsync()
+    {
+        _query.Metrics = "comments";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+    
+    public async Task<long> GetLikesAsync()
+    {
+        _query.Metrics = "likes";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+    
+    public async Task<long> GetDislikesAsync()
+    {
+        _query.Metrics = "dislikes";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+    
+    public async Task<long> GetAverageViewDurationAsync()
+    {
+        _query.Metrics = "averageViewDuration";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+
+    public async Task<long> GetAverageDurationAsync()
+    {
+        _query.Metrics = "averageViewDuration";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+    
+    public async Task<long> GetVideosAddedToPlaylistsAsync()
+    {
+        _query.Metrics = "videosAddedToPlaylists";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+    
+    public async Task<long> GetSharesAsync()
+    {
+        _query.Metrics = "shares";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return (long)response.Rows[0][0];
+    }
+
     // Репорт просмотров по городам
-    public async Task<QueryResponse> GetViewsReportByCity()
+    public async Task<QueryResponse> GetViewsReportByCityAsync()
     {
         _query.Dimensions = "city";
         _query.Sort = "-views";
@@ -56,7 +114,7 @@ public class AnalyticsService
     }
 
     // Возраст, пол
-    public async Task<QueryResponse> GetDemographicReport()
+    public async Task<QueryResponse> GetDemographicReportAsync()
     {
         _query.Dimensions = "ageGroup,gender";
         _query.Metrics = "viewerPercentage";
@@ -67,7 +125,7 @@ public class AnalyticsService
     
     
     // ОС и тип девайса
-    public async Task<QueryResponse> GetDeviceAndOs()
+    public async Task<QueryResponse> GetDeviceAndOsAsync()
     {
         _query.Dimensions = "deviceType,operatingSystem,liveOrOnDemand,subscribedStatus";
         _query.Metrics = "views,estimatedMinutesWatched";
@@ -77,7 +135,7 @@ public class AnalyticsService
     }
     
     // подписчики и отписчики за месяц
-    public async Task<QueryResponse> GetMonthSubsDynamic()
+    public async Task<QueryResponse> GetMonthSubsDynamicAsync()
     {
         _query.StartDate = DateTime.Now.AddMonths(-1).ToString("yyyy-MMMM-dd");
         _query.EndDate = DateTime.Now.ToString("yyyy-MM-dd");

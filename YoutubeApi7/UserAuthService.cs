@@ -17,7 +17,5 @@ public class UserAuthService
 
     public static async Task Authorize2()
     {
-        
-        
     }
 }

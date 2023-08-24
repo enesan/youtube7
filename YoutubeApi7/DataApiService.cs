@@ -13,8 +13,8 @@ public class DataApiService
         _service = service;
         _apiKey = apiKey;
     }
-
-    public async Task<ulong> GetSubscriberCount()
+    
+    public async Task<ulong> GetSubscriberCountAsync()
     {
         string parts = "snippet, statistics";
 
