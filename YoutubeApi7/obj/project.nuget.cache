@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "CwNjx+Zuu2461QmpDPa1cTLbSpnY4t8RIhg7Yx52CGN075C2MO4cNCJ9zoH5Ho89Ld2BEdPernv31IptETapog==",
+  "dgSpecHash": "hF0Jy36uf7oXS1lXpzAoT5/D6aSCsbs/9DsTZ/r33aHNfFs4zi34kDaLdhFO0E0v7gzv99+9YYdBfN0Qr94Frw==",
   "success": true,
   "projectFilePath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\YoutubeApi7\\YoutubeApi7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis\\1.61.0\\google.apis.1.61.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis.auth\\1.61.0\\google.apis.auth.1.61.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis.core\\1.61.0\\google.apis.core.1.61.0.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\google.apis.oauth2.v2\\1.61.0.1869\\google.apis.oauth2.v2.1.61.0.1869.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis.youtube.v3\\1.61.0.3151\\google.apis.youtube.v3.1.61.0.3151.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis.youtubeanalytics.v2\\1.61.0.3106\\google.apis.youtubeanalytics.v2.1.61.0.3106.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\google.apis.youtubereporting.v1\\1.61.0.3106\\google.apis.youtubereporting.v1.1.61.0.3106.nupkg.sha512",

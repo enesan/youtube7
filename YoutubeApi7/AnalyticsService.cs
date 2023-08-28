@@ -35,6 +35,14 @@ public class AnalyticsService
         _query.MaxResults = 250;
 
     }
+    
+    public async Task<IList<object>> GetBaseReportAsync()
+    {
+        _query.Metrics = "views,comments,likes,dislikes,averageViewDuration,videosAddedToPlaylists,shares";
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        return response.Rows[0];
+    }
 
     // базовые метрики
     public async Task<long> GetViewsAsync()
@@ -70,14 +78,6 @@ public class AnalyticsService
     }
     
     public async Task<long> GetAverageViewDurationAsync()
-    {
-        _query.Metrics = "averageViewDuration";
-        var response = await _query.ExecuteAsync();
-        ClearQuery();
-        return (long)response.Rows[0][0];
-    }
-
-    public async Task<long> GetAverageDurationAsync()
     {
         _query.Metrics = "averageViewDuration";
         var response = await _query.ExecuteAsync();
@@ -148,6 +148,18 @@ public class AnalyticsService
         return response;
     }
 
+    public async Task<bool> WasVideoStream(string videoId)
+    {
+        _query.Dimensions = "liveOrOnDemand";
+        _query.Filters = $"video=={videoId}";
+        _query.Metrics = "views";
+
+        var response = await _query.ExecuteAsync();
+        ClearQuery();
+        
+        return (string)response.Rows[0][0] == "LIVE";
+    } 
+
     private void ClearQuery()
     {
         _query.Dimensions = null;
@@ -156,5 +168,5 @@ public class AnalyticsService
         _query.Filters = null;
     }
     
-
+    
 }

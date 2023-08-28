@@ -15,7 +15,5 @@ public class UserAuthService
         return await GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, scopes, userName, CancellationToken.None);
     }
 
-    public static async Task Authorize2()
-    {
-    }
+    
 }

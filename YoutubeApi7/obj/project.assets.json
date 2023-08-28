@@ -53,6 +53,23 @@
           }
         }
       },
+      "Google.Apis.Oauth2.v2/1.61.0.1869": {
+        "type": "package",
+        "dependencies": {
+          "Google.Apis": "1.61.0",
+          "Google.Apis.Auth": "1.61.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Oauth2.v2.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Oauth2.v2.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Google.Apis.YouTube.v3/1.61.0.3151": {
         "type": "package",
         "dependencies": {
@@ -194,6 +211,28 @@
         "lib/netstandard2.0/Google.Apis.Core.xml"
       ]
     },
+    "Google.Apis.Oauth2.v2/1.61.0.1869": {
+      "sha512": "bD/x2gIqubA6XZ1+gJBdMeIq8E27PLOwo2TTZIcequAaEpdd1bSWGhEystp8S3braqi4/BDvp21EGG20uD69BA==",
+      "type": "package",
+      "path": "google.apis.oauth2.v2/1.61.0.1869",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.oauth2.v2.1.61.0.1869.nupkg.sha512",
+        "google.apis.oauth2.v2.nuspec",
+        "lib/net45/Google.Apis.Oauth2.v2.dll",
+        "lib/net45/Google.Apis.Oauth2.v2.pdb",
+        "lib/net45/Google.Apis.Oauth2.v2.xml",
+        "lib/netstandard1.3/Google.Apis.Oauth2.v2.dll",
+        "lib/netstandard1.3/Google.Apis.Oauth2.v2.pdb",
+        "lib/netstandard1.3/Google.Apis.Oauth2.v2.xml",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.dll",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.pdb",
+        "lib/netstandard2.0/Google.Apis.Oauth2.v2.xml"
+      ]
+    },
     "Google.Apis.YouTube.v3/1.61.0.3151": {
       "sha512": "FXs30iKHUQR8880x0P39AzkzGQ9I+6pJAcqzbrdZ044iohx3DgoEFNnAyDFsJ2QNyiZKo/ky0HK2s9yPxGn2qg==",
       "type": "package",
@@ -294,6 +333,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Google.Apis.Auth >= 1.61.0",
+      "Google.Apis.Oauth2.v2 >= 1.61.0.1869",
       "Google.Apis.YouTube.v3 >= 1.61.0.3151",
       "Google.Apis.YouTubeAnalytics.v2 >= 1.61.0.3106",
       "Google.Apis.YouTubeReporting.v1 >= 1.61.0.3106"
@@ -341,6 +381,10 @@
           "Google.Apis.Auth": {
             "target": "Package",
             "version": "[1.61.0, )"
+          },
+          "Google.Apis.Oauth2.v2": {
+            "target": "Package",
+            "version": "[1.61.0.1869, )"
           },
           "Google.Apis.YouTube.v3": {
             "target": "Package",

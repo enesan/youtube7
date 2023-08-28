@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeApi7", "YoutubeApi7\YoutubeApi7.csproj", "{6BDCB555-8579-45AA-B0FB-DC8DBECDF963}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchApiProject", "TwitchApiProject\TwitchApiProject.csproj", "{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{6BDCB555-8579-45AA-B0FB-DC8DBECDF963}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BDCB555-8579-45AA-B0FB-DC8DBECDF963}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDCB555-8579-45AA-B0FB-DC8DBECDF963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
