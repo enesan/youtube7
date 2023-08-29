@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Data;
+using System.Diagnostics;
 using TwitchLib.Api;
 using TwitchLib.Api.Auth;
 using TwitchLib.Api.Core;
@@ -42,18 +43,14 @@ TwitchAPI api = new TwitchAPI(rateLimiter: limiter, http: callHandler)
 };
 
 string authUrl = api.Auth.GetAuthorizationCodeUrl(REDIRECT_URI, scopes, true, state: TEST_STATE, CLIENT_ID);
-api.Auth.
-Console.WriteLine(authUrl);
 
-//var a = await api.Helix.Subscriptions.CheckUserSubscriptionAsync();
 
-//Console.WriteLine("1: " +  api.Settings.AccessToken);
-//await api.Auth.ValidateAccessTokenAsync();
+using Process? n =  Process.Start(new ProcessStartInfo(authUrl) {UseShellExecute = true});
+int g = 12;
 
-//var test = await api.Helix.Games.GetTopGamesAsync();
 
-Console.WriteLine(await api.Auth.GetAccessTokenAsync());
-//await api.Auth.GetAccessTokenAsync();
+
+
 
 
 

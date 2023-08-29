@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeApi7", "YoutubeApi7\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchApiProject", "TwitchApiProject\TwitchApiProject.csproj", "{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchWebApp", "TwitchWebApp\TwitchWebApp.csproj", "{F5F17961-F1F5-474D-8148-96C6ED1A9A22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B3F900-7CD7-4661-ABF0-EC02412DF31E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

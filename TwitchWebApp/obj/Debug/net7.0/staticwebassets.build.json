@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Mq2XwfHNLQHgWC7qGrwpWln3217IK5KSnh6vtCG6q80=",
+  "Source": "TwitchWebApp",
+  "BasePath": "_content/TwitchWebApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
