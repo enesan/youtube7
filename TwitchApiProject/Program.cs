@@ -10,6 +10,7 @@ using TwitchLib.Api.Core.HttpCallHandlers;
 using TwitchLib.Api.Core.Interfaces;
 using TwitchLib.Api.Core.RateLimiter;
 using TwitchLib.Api.Services;
+using TwitchLib.Client.Models;
 
 Console.WriteLine("Hello, World!");
 
@@ -44,9 +45,13 @@ TwitchAPI api = new TwitchAPI(rateLimiter: limiter, http: callHandler)
 
 string authUrl = api.Auth.GetAuthorizationCodeUrl(REDIRECT_URI, scopes, true, state: TEST_STATE, CLIENT_ID);
 
-
 using Process? n =  Process.Start(new ProcessStartInfo(authUrl) {UseShellExecute = true});
-int g = 12;
+
+
+ 
+
+
+
 
 
 

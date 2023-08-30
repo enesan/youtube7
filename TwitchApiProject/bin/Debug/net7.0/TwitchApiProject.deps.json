@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "TwitchApiProject/1.0.0": {
         "dependencies": {
-          "TwitchLib.Api": "3.10.0-preview-e47ba7f"
+          "TwitchLib.Api": "3.10.0-preview-e47ba7f",
+          "TwitchLib.Client.Models": "3.3.1"
         },
         "runtime": {
           "TwitchApiProject.dll": {}
@@ -512,6 +513,25 @@
             "fileVersion": "3.10.0.0"
           }
         }
+      },
+      "TwitchLib.Client.Enums/3.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/TwitchLib.Client.Enums.dll": {
+            "assemblyVersion": "3.3.1.0",
+            "fileVersion": "3.3.1.0"
+          }
+        }
+      },
+      "TwitchLib.Client.Models/3.3.1": {
+        "dependencies": {
+          "TwitchLib.Client.Enums": "3.3.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/TwitchLib.Client.Models.dll": {
+            "assemblyVersion": "3.3.1.0",
+            "fileVersion": "3.3.1.0"
+          }
+        }
       }
     }
   },
@@ -933,6 +953,20 @@
       "sha512": "sha512-MWi2Abzq3PGsGkTRuV2yLF23Oe8014jNYBpmmb2pX9bquzGMGANiZLdJDh6N76BSoImxTxHFRcpx7V9H0na5Pg==",
       "path": "twitchlib.api.helix.models/3.10.0-preview-e47ba7f",
       "hashPath": "twitchlib.api.helix.models.3.10.0-preview-e47ba7f.nupkg.sha512"
+    },
+    "TwitchLib.Client.Enums/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vZQy5ZzrSObpbcRgf8LAnrmrOK4pGc8owsbeaJ3JK+PWFfnvo5mBdTp6kUt/3MO31cD+4E2buTIlPnyAA9lMMg==",
+      "path": "twitchlib.client.enums/3.3.1",
+      "hashPath": "twitchlib.client.enums.3.3.1.nupkg.sha512"
+    },
+    "TwitchLib.Client.Models/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-v5wODXCF8xIjKs5hDXprpMI839ONNZ/i84ZOjrdjNN70QBa88EKeckLF4UwPoWX040ztvk4akPOsPyVWlWiwrg==",
+      "path": "twitchlib.client.models/3.3.1",
+      "hashPath": "twitchlib.client.models.3.3.1.nupkg.sha512"
     }
   }
 }

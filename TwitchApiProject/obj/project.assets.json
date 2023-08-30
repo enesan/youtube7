@@ -972,6 +972,35 @@
             "related": ".xml"
           }
         }
+      },
+      "TwitchLib.Client.Enums/3.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/TwitchLib.Client.Enums.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/TwitchLib.Client.Enums.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "TwitchLib.Client.Models/3.3.1": {
+        "type": "package",
+        "dependencies": {
+          "TwitchLib.Client.Enums": "3.3.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/TwitchLib.Client.Models.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/TwitchLib.Client.Models.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
@@ -3269,11 +3298,38 @@
         "twitchlib.api.helix.models.nuspec",
         "twitchlib.png"
       ]
+    },
+    "TwitchLib.Client.Enums/3.3.1": {
+      "sha512": "vZQy5ZzrSObpbcRgf8LAnrmrOK4pGc8owsbeaJ3JK+PWFfnvo5mBdTp6kUt/3MO31cD+4E2buTIlPnyAA9lMMg==",
+      "type": "package",
+      "path": "twitchlib.client.enums/3.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/TwitchLib.Client.Enums.dll",
+        "lib/netstandard2.0/TwitchLib.Client.Enums.xml",
+        "twitchlib.client.enums.3.3.1.nupkg.sha512",
+        "twitchlib.client.enums.nuspec"
+      ]
+    },
+    "TwitchLib.Client.Models/3.3.1": {
+      "sha512": "v5wODXCF8xIjKs5hDXprpMI839ONNZ/i84ZOjrdjNN70QBa88EKeckLF4UwPoWX040ztvk4akPOsPyVWlWiwrg==",
+      "type": "package",
+      "path": "twitchlib.client.models/3.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/TwitchLib.Client.Models.dll",
+        "lib/netstandard2.0/TwitchLib.Client.Models.xml",
+        "twitchlib.client.models.3.3.1.nupkg.sha512",
+        "twitchlib.client.models.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "TwitchLib.Api >= 3.10.0-preview-e47ba7f"
+      "TwitchLib.Api >= 3.10.0-preview-e47ba7f",
+      "TwitchLib.Client.Models >= 3.3.1"
     ]
   },
   "packageFolders": {
@@ -3318,6 +3374,10 @@
           "TwitchLib.Api": {
             "target": "Package",
             "version": "[3.10.0-preview-e47ba7f, )"
+          },
+          "TwitchLib.Client.Models": {
+            "target": "Package",
+            "version": "[3.3.1, )"
           }
         },
         "imports": [

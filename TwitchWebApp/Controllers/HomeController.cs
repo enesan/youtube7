@@ -13,11 +13,18 @@ public class HomeController : Controller
         return  "Auth, i love you";
     }
     
-    public string Index([FromQuery] string? code)
+    public async Task<string> Index([FromQuery] string? code)
     {
-        if (code != null)
-            _service.RequestCode = code;
-
+        if (code != null) 
+           await _service.SetAccessToken(code);
+        
         return code ?? "There is no code in index";
+    }
+
+    public async Task<string?> GetB()
+    {
+        var user = await _service.GetBroadcasterId();
+        string e = "Email: " + user?.Email;
+        return e;
     }
 }

@@ -23,3 +23,5 @@ D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\obj\Debug\net7.0\ref\T
 D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\bin\Debug\net7.0\TwitchLib.Api.dll
 D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\bin\Debug\net7.0\TwitchLib.Api.Helix.dll
 D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\bin\Debug\net7.0\TwitchLib.Api.Helix.Models.dll
+D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\bin\Debug\net7.0\TwitchLib.Client.Enums.dll
+D:\Users\vladr\RiderProjects\YoutubeApi7\TwitchApiProject\bin\Debug\net7.0\TwitchLib.Client.Models.dll

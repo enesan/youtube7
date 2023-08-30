@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zexy0nRoE9Q/UYC6KpJH22qULJzJ7D9mAC+fyaIjLVMeJPY1/w9dFz7xmRPMgS9bShStEb6e7s34GBr/QHCssw==",
+  "dgSpecHash": "dMWhWj4Ov1FDkM1pcan8ItHvg3Op1GELjcczkDe0815T6CwH62/1nGB0UNYInJNfUS8QacoGmJHprB/F1IXTdw==",
   "success": true,
   "projectFilePath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj",
   "expectedPackageFiles": [
@@ -62,7 +62,9 @@
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.core.interfaces\\3.10.0-preview-e47ba7f\\twitchlib.api.core.interfaces.3.10.0-preview-e47ba7f.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.core.models\\3.10.0-preview-e47ba7f\\twitchlib.api.core.models.3.10.0-preview-e47ba7f.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.helix\\3.10.0-preview-e47ba7f\\twitchlib.api.helix.3.10.0-preview-e47ba7f.nupkg.sha512",
-    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.helix.models\\3.10.0-preview-e47ba7f\\twitchlib.api.helix.models.3.10.0-preview-e47ba7f.nupkg.sha512"
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.helix.models\\3.10.0-preview-e47ba7f\\twitchlib.api.helix.models.3.10.0-preview-e47ba7f.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.enums\\3.3.1\\twitchlib.client.enums.3.3.1.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.models\\3.3.1\\twitchlib.client.models.3.3.1.nupkg.sha512"
   ],
   "logs": []
 }
