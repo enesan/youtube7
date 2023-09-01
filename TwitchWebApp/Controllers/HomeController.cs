@@ -21,10 +21,12 @@ public class HomeController : Controller
         return code ?? "There is no code in index";
     }
 
-    public async Task<string?> GetB()
+    public async void GetB()
     {
-        var user = await _service.GetBroadcasterId();
-        string e = "Email: " + user?.Email;
-        return e;
+       // var a =  await _service.GetVideos();
+        await _service.GetFollowers();
+        int aa = 12;
     }
+    
+    
 }
