@@ -9,7 +9,8 @@ public class HomeController : Controller
     
     public string Auth()
     {
-        _service.Authorize(); 
+      //  _service.Authorize(); 
+        _service.AuthForFollowers(true).ConfigureAwait(false); 
         return  "Auth, i love you";
     }
     
@@ -23,9 +24,8 @@ public class HomeController : Controller
 
     public async void GetB()
     {
-       // var a =  await _service.GetVideos();
-        await _service.GetFollowers();
-        int aa = 12;
+         await _service.GetFollowers();
+        var b = 12;
     }
     
     

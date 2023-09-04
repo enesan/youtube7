@@ -1,10 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Formats.Tar;
 using System.Globalization;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Runtime.InteropServices.JavaScript;
 using System.Text;
+using Microsoft.Extensions.Localization;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using TwitchLib.Api;
 using TwitchLib.Api.Core;
 using TwitchLib.Api.Core.Enums;
@@ -15,6 +19,7 @@ using TwitchLib.Api.Helix;
 using TwitchLib.Api.Helix.Models.Users.GetUsers;
 using TwitchLib.Api.Helix.Models.Videos.GetVideos;
 using TwitchLib.Api.Services.Events;
+using TwitchLib.EventSub.Core.SubscriptionTypes.Stream;
 using TwitchWebApp.Extensions;
 using TwitchWebApp.Models;
 
@@ -30,11 +35,14 @@ public class TwitchService
     private IRateLimiter _limiter;
     private IHttpCallHandler _callHandler;
     private List<AuthScopes> _scopes;
+    private List<string> _scopesString;
     private TwitchAPI _api;
+    
 
     private static string? AccessToken { get; set; }
     private static string? RefreshToken { get; set; }
-
+    
+    // добавить фабрику httpclient
 
     public TwitchService()
     {
@@ -44,6 +52,13 @@ public class TwitchService
         _scopes = new()
         {
             AuthScopes.Any
+        };
+
+        _scopesString = new()
+        {
+            "moderator:read:followers", 
+            "channel:read:charity", 
+            
         };
 
         _api = new TwitchAPI(rateLimiter: _limiter, http: _callHandler)
@@ -63,19 +78,54 @@ public class TwitchService
         using Process? authProcess = Process.Start(new ProcessStartInfo(authUrl) { UseShellExecute = true });
     }
 
+    public async Task AuthForFollowers(bool forceVerify)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var scope in _scopesString)
+        {
+            sb.Append(scope);
+            sb.Append("+");
+        }
+        sb.Remove(sb.Length-1, 1);
+        
+        string url = $"https://id.twitch.tv/oauth2/authorize?client_id={CLIENT_ID}&force_verify={forceVerify}&redirect_uri={REDIRECT_URI}" +
+                     $"&response_type=code&scope={sb}&state={TEST_STATE}";
+        
+        using Process? authProcess = Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+    }
+
     public async Task SetAccessToken(string code)
     {
         var response = await _api.Auth.GetAccessTokenFromCodeAsync(code, CLIENT_SECRET, REDIRECT_URI, CLIENT_ID);
         AccessToken = response.AccessToken;
         RefreshToken = response.RefreshToken;
-        
+        Console.WriteLine(AccessToken);
     }
 
-    public async Task<TwitchReportDto> GetVideos()
+    public async Task<TwitchReportDto> GetReport()
+    {
+        var videos = await GetVideos();
+        var meanStreamingTime = GetMeanStreamingTime(videos);
+        var streamAddingFrequency = GetStreamsAddingFrequency(videos);
+        var clipsMeanViews = await GetClipsMeanViews();
+        var meanViewsCount = GetMeanViewsCount(videos);
+
+        return new TwitchReportDto()
+        {
+            MeanViews = meanViewsCount,
+            MeanClipViews = clipsMeanViews,
+            StreamsAddingFrequency = streamAddingFrequency,
+            MeanStreamingTime = meanStreamingTime,
+
+        };
+
+    }
+
+    public async Task<Video[]> GetVideos()
     {
         var monthAgo = DateTime.Today.AddMonths(-1);
         var userId = await GetBroadcasterId("emongg");
-        var videos = (await _api.Helix.Videos.GetVideosAsync(
+        return (await _api.Helix.Videos.GetVideosAsync(
                 userId: userId,
                 period: Period.Month,
                 accessToken: AccessToken,
@@ -84,17 +134,36 @@ public class TwitchService
             .Where(x => DateTime.Parse(x.CreatedAt, CultureInfo.InvariantCulture) >= monthAgo)
             .ToArray();
         
-        return new TwitchReportDto()
-        {
-        };
+        
     }
 
-    public async Task GetFollowers()
+    private async Task<long> GetFollowers()
     {
+        var userId = await GetBroadcasterId("emongg");
+       
+
         using HttpClient client = new HttpClient();
-        var response = await client.GetAsync(new Uri($"https://api.twitch.tv/helix/channels/followers?broadcaster_id=emongg&access_token={AccessToken}"));
+        await RefreshAccessToken();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
+        client.DefaultRequestHeaders.Add("Client-Id", CLIENT_ID);
+        var response = await client.GetAsync(new Uri($"https://api.twitch.tv/helix/channels/followers?broadcaster_id={userId}&access_token={AccessToken}"));
         string responseString = await response.Content.ReadAsStringAsync();
-        int a = 12;
+        var json = JObject.Parse(responseString);
+        return Int64.Parse(json["total"]!.ToString());  
+    }
+
+    // взять метрики из бд
+    private long SubsLost(long subsCount)
+    {
+        return subsCount - subsCount;
+    }
+
+    private async Task RefreshAccessToken()
+    {
+       var response = await _api.Auth.RefreshAuthTokenAsync(RefreshToken, CLIENT_SECRET, CLIENT_ID);
+
+       RefreshToken = response.RefreshToken;
+       AccessToken = response.AccessToken;
     }
 
     private TimeSpan GetMeanStreamingTime(Video[] videos)
@@ -111,7 +180,7 @@ public class TwitchService
 
     private double GetStreamsAddingFrequency(Video[] videos)
     {
-        return (double)videos.Length / DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+        return Math.Round((double)videos.Length / DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month), 2);
     }
 
     private async Task<double> GetClipsMeanViews()
@@ -127,12 +196,12 @@ public class TwitchService
             accessToken: AccessToken
         )).Clips;
 
-        return clips.Average(x => x.ViewCount);
+        return Math.Round(clips.Average(x => x.ViewCount),2);
     }
 
     private double GetMeanViewsCount(Video[] videos)
     {
-        return videos.Average(x => x.ViewCount);
+        return Math.Round(videos.Average(x => x.ViewCount));
     }
 
     private async Task<string> GetBroadcasterId()
