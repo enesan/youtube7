@@ -1,13 +1,7 @@
 ﻿using System.Diagnostics;
-using System.Formats.Tar;
 using System.Globalization;
-using System.Net;
 using System.Net.Http.Headers;
-using System.Runtime.InteropServices.JavaScript;
 using System.Text;
-using Microsoft.Extensions.Localization;
-using Microsoft.VisualBasic;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using TwitchLib.Api;
 using TwitchLib.Api.Core;
@@ -22,6 +16,9 @@ using TwitchLib.Api.Services.Events;
 using TwitchLib.EventSub.Core.SubscriptionTypes.Stream;
 using TwitchWebApp.Extensions;
 using TwitchWebApp.Models;
+using TwitchLib.EventSub;
+using TwitchLib.EventSub.Webhooks;
+using TwitchLib.EventSub.Webhooks.Core.EventArgs.Stream;
 
 namespace TwitchWebApp.Services;
 
@@ -34,7 +31,6 @@ public class TwitchService
 
     private IRateLimiter _limiter;
     private IHttpCallHandler _callHandler;
-    private List<AuthScopes> _scopes;
     private List<string> _scopesString;
     private TwitchAPI _api;
     
@@ -49,16 +45,9 @@ public class TwitchService
         _limiter = TimeLimiter.GetFromMaxCountByInterval(1000, TimeSpan.FromDays(10));
         _callHandler = new TwitchHttpClient();
 
-        _scopes = new()
-        {
-            AuthScopes.Any
-        };
-
         _scopesString = new()
         {
-            "moderator:read:followers", 
-            "channel:read:charity", 
-            
+            "moderator:read:followers"
         };
 
         _api = new TwitchAPI(rateLimiter: _limiter, http: _callHandler)
@@ -66,16 +55,9 @@ public class TwitchService
             Settings =
             {
                 Secret = CLIENT_SECRET,
-                ClientId = CLIENT_ID,
-                Scopes = _scopes
+                ClientId = CLIENT_ID
             }
         };
-    }
-
-    public void Authorize()
-    {
-        string authUrl = _api.Auth.GetAuthorizationCodeUrl(REDIRECT_URI, _scopes, true, state: TEST_STATE, CLIENT_ID);
-        using Process? authProcess = Process.Start(new ProcessStartInfo(authUrl) { UseShellExecute = true });
     }
 
     public async Task AuthForFollowers(bool forceVerify)
@@ -109,6 +91,8 @@ public class TwitchService
         var streamAddingFrequency = GetStreamsAddingFrequency(videos);
         var clipsMeanViews = await GetClipsMeanViews();
         var meanViewsCount = GetMeanViewsCount(videos);
+        var totalFollowers = await GetFollowers();
+        var subsDynamic = GetSubsDynamic(totalFollowers);
 
         return new TwitchReportDto()
         {
@@ -116,12 +100,13 @@ public class TwitchService
             MeanClipViews = clipsMeanViews,
             StreamsAddingFrequency = streamAddingFrequency,
             MeanStreamingTime = meanStreamingTime,
-
+            TotalSubs = totalFollowers,
+            SubsDynamic = subsDynamic
         };
 
     }
 
-    public async Task<Video[]> GetVideos()
+    private async Task<Video[]> GetVideos()
     {
         var monthAgo = DateTime.Today.AddMonths(-1);
         var userId = await GetBroadcasterId("emongg");
@@ -133,15 +118,11 @@ public class TwitchService
                 first: 100)).Videos
             .Where(x => DateTime.Parse(x.CreatedAt, CultureInfo.InvariantCulture) >= monthAgo)
             .ToArray();
-        
-        
     }
 
     private async Task<long> GetFollowers()
     {
         var userId = await GetBroadcasterId("emongg");
-       
-
         using HttpClient client = new HttpClient();
         await RefreshAccessToken();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
@@ -153,7 +134,7 @@ public class TwitchService
     }
 
     // взять метрики из бд
-    private long SubsLost(long subsCount)
+    private long GetSubsDynamic(long subsCount)
     {
         return subsCount - subsCount;
     }
@@ -168,11 +149,22 @@ public class TwitchService
 
     private TimeSpan GetMeanStreamingTime(Video[] videos)
     {
-        string pattern = "H'h'm'm's's'";
-
+        string fullPattern = "H'h'm'm's's'";
+        string minutesPattern = "m'm's's'";
+        string secondsPattern = "s's'";
+        
         return (videos
-                    .Select(x => DateTime.ParseExact(x.Duration, pattern, CultureInfo.InvariantCulture).TimeOfDay)
-                    .Aggregate((item, accum) => accum += item)
+                    .Select(x =>
+                    {
+                        DateTime parseResult;
+
+                        return (DateTime.TryParseExact(x.Duration, fullPattern, CultureInfo.InvariantCulture,
+                                DateTimeStyles.None, out parseResult) ? parseResult
+                            : DateTime.TryParseExact(x.Duration, minutesPattern, CultureInfo.InvariantCulture,
+                                DateTimeStyles.None, out parseResult) ? parseResult
+                            : DateTime.ParseExact(x.Duration, secondsPattern, CultureInfo.InvariantCulture)).TimeOfDay;
+                    })
+                    .Aggregate((item, accum) => accum += item) 
                 / videos.Length)
             .StripMillisecons();
     }
@@ -213,6 +205,21 @@ public class TwitchService
     {
         return (await _api.Helix.Users.GetUsersAsync(accessToken: AccessToken, logins: new() { login })).Users[0].Id;
     }
+
+
+    public async Task webTest()
+    {
+        EventSubWebhooks e = new EventSubWebhooks();
+        e.OnStreamOnline += Console.WriteLine("hell");
+    }
+
+    private void Test(object sender, StreamOnlineArgs args)
+    {
+        args. 
+    }
+
+
+
 
     // public async Task SetAccessToken(string code)
     // {

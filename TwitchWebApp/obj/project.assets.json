@@ -1146,7 +1146,7 @@
           "lib/netstandard2.0/TwitchLib.Communication.dll": {}
         }
       },
-      "TwitchLib.EventSub.Core/2.0.0": {
+      "TwitchLib.EventSub.Core/2.3.0": {
         "type": "package",
         "compile": {
           "lib/net7.0/TwitchLib.EventSub.Core.dll": {
@@ -1158,6 +1158,25 @@
             "related": ".xml"
           }
         }
+      },
+      "TwitchLib.EventSub.Webhooks/2.3.0": {
+        "type": "package",
+        "dependencies": {
+          "TwitchLib.EventSub.Core": "2.3.0"
+        },
+        "compile": {
+          "lib/net7.0/TwitchLib.EventSub.Webhooks.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/TwitchLib.EventSub.Webhooks.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "TwitchLib.EventSub.Websockets/0.0.3": {
         "type": "package",
@@ -4900,10 +4919,10 @@
         "twitchlib.communication.nuspec"
       ]
     },
-    "TwitchLib.EventSub.Core/2.0.0": {
-      "sha512": "1Rx5e5qgRKAzsBop26qhotNRGdYAAXdA+5GL2DYaZv0dz6fzbM0RN4hn2UZ8nznFiZ+XHyzMX1BeLvm02aPQpQ==",
+    "TwitchLib.EventSub.Core/2.3.0": {
+      "sha512": "+AEDG90Z2UtpW6BPXeJ28dpLuCpc71TWogkO+Lzn4dGAa7RGq9NG2zaj6Q4s1RL9e7hf58a152r9uYMFv8Jgtg==",
       "type": "package",
-      "path": "twitchlib.eventsub.core/2.0.0",
+      "path": "twitchlib.eventsub.core/2.3.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4918,8 +4937,26 @@
         "lib/netstandard2.0/TwitchLib.EventSub.Core.xml",
         "lib/netstandard2.1/TwitchLib.EventSub.Core.dll",
         "lib/netstandard2.1/TwitchLib.EventSub.Core.xml",
-        "twitchlib.eventsub.core.2.0.0.nupkg.sha512",
+        "twitchlib.eventsub.core.2.3.0.nupkg.sha512",
         "twitchlib.eventsub.core.nuspec"
+      ]
+    },
+    "TwitchLib.EventSub.Webhooks/2.3.0": {
+      "sha512": "wJcqiLky6n2bIrSCApKPVYYfYqMh6zJYh7zQY+mq/SVyDlm8bnDsebMzPbBtYD/7Q6Y/7BP95tKUmSWe79mv3A==",
+      "type": "package",
+      "path": "twitchlib.eventsub.webhooks/2.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/TwitchLib.EventSub.Webhooks.dll",
+        "lib/net5.0/TwitchLib.EventSub.Webhooks.xml",
+        "lib/net6.0/TwitchLib.EventSub.Webhooks.dll",
+        "lib/net6.0/TwitchLib.EventSub.Webhooks.xml",
+        "lib/net7.0/TwitchLib.EventSub.Webhooks.dll",
+        "lib/net7.0/TwitchLib.EventSub.Webhooks.xml",
+        "twitchlib.eventsub.webhooks.2.3.0.nupkg.sha512",
+        "twitchlib.eventsub.webhooks.nuspec"
       ]
     },
     "TwitchLib.EventSub.Websockets/0.0.3": {
@@ -4958,7 +4995,8 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "TwitchLib >= 3.5.3"
+      "TwitchLib >= 3.5.3",
+      "TwitchLib.EventSub.Webhooks >= 2.3.0"
     ]
   },
   "packageFolders": {
@@ -5003,6 +5041,10 @@
           "TwitchLib": {
             "target": "Package",
             "version": "[3.5.3, )"
+          },
+          "TwitchLib.EventSub.Webhooks": {
+            "target": "Package",
+            "version": "[2.3.0, )"
           }
         },
         "imports": [

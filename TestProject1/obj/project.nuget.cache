@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8EItof97qafc8Hx7KLhJ0epoH/WCeMQsNKOZonkz5n2WOEEBpkeRQ68qeUjP+rl1HSRAMvzrddBY2429Jf+Ucw==",
+  "dgSpecHash": "tU5zvO/ZH5WeqW+QF4wys4bpwS4Q6Jzz7b2sasgInrNh3OgQD1sCoSRsKUVjsgni2e8F4kg/QzBJZF0tEY8J7g==",
   "success": true,
   "projectFilePath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TestProject1\\TestProject1.csproj",
   "expectedPackageFiles": [
@@ -85,7 +85,8 @@
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.enums\\3.3.1\\twitchlib.client.enums.3.3.1.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.models\\3.3.1\\twitchlib.client.models.3.3.1.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.communication\\1.0.4\\twitchlib.communication.1.0.4.nupkg.sha512",
-    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.core\\2.0.0\\twitchlib.eventsub.core.2.0.0.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.core\\2.3.0\\twitchlib.eventsub.core.2.3.0.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.webhooks\\2.3.0\\twitchlib.eventsub.webhooks.2.3.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.websockets\\0.0.3\\twitchlib.eventsub.websockets.0.0.3.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.pubsub\\3.2.6\\twitchlib.pubsub.3.2.6.nupkg.sha512"
   ],

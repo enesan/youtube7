@@ -24,7 +24,7 @@ public class HomeController : Controller
 
     public async void GetB()
     {
-         await _service.GetFollowers();
+        await _service.GetReport();
         var b = 12;
     }
     

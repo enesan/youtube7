@@ -43,6 +43,10 @@
             "TwitchLib": {
               "target": "Package",
               "version": "[3.5.3, )"
+            },
+            "TwitchLib.EventSub.Webhooks": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             }
           },
           "imports": [
