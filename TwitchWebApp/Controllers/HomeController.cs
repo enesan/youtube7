@@ -5,7 +5,12 @@ namespace TwitchWebApp.Controllers;
 
 public class HomeController : Controller
 {
-    private TwitchService _service = new();
+    private ITwitchService _service;
+
+    public HomeController(ITwitchService twitchService)
+    {
+        _service = twitchService;
+    }
     
     public string Auth()
     {

@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using TwitchWebApp;
+using TwitchWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddHttpClient<ITwitchService, ITwitchService>();
+builder.Services.AddScoped<ITwitchService, TwitchService>();
 
 var app = builder.Build();
 
