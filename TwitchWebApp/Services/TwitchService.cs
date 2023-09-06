@@ -22,7 +22,7 @@ using TwitchLib.EventSub.Webhooks.Core.EventArgs.Stream;
 
 namespace TwitchWebApp.Services;
 
-public class TwitchService
+public class TwitchService : ITwitchService
 {
     private const string CLIENT_ID = "hirrtfyhk37fbgla954bj646i505h0";
     private const string CLIENT_SECRET = "19le5p7x5uip2zhhev805fm674eyqk";
@@ -33,14 +33,14 @@ public class TwitchService
     private IHttpCallHandler _callHandler;
     private List<string> _scopesString;
     private TwitchAPI _api;
-    
 
+    private IHttpClientFactory _httpClientFactory;
+    
     private static string? AccessToken { get; set; }
     private static string? RefreshToken { get; set; }
     
-    // добавить фабрику httpclient
 
-    public TwitchService()
+    public TwitchService(IHttpClientFactory clientFactory)
     {
         _limiter = TimeLimiter.GetFromMaxCountByInterval(1000, TimeSpan.FromDays(10));
         _callHandler = new TwitchHttpClient();
@@ -60,7 +60,7 @@ public class TwitchService
         };
     }
 
-    public async Task AuthForFollowers(bool forceVerify)
+    public void Authorize(bool forceVerify)
     {
         StringBuilder sb = new StringBuilder();
         foreach (var scope in _scopesString)
@@ -84,14 +84,14 @@ public class TwitchService
         Console.WriteLine(AccessToken);
     }
 
-    public async Task<TwitchReportDto> GetReport()
+    public async Task<TwitchReportDto> GetReport(string? userId = null)
     {
         var videos = await GetVideos();
         var meanStreamingTime = GetMeanStreamingTime(videos);
         var streamAddingFrequency = GetStreamsAddingFrequency(videos);
-        var clipsMeanViews = await GetClipsMeanViews();
+        var clipsMeanViews = await GetClipsMeanViews(userId);
         var meanViewsCount = GetMeanViewsCount(videos);
-        var totalFollowers = await GetFollowers();
+        var totalFollowers = await GetFollowers(userId);
         var subsDynamic = GetSubsDynamic(totalFollowers);
 
         return new TwitchReportDto()
@@ -103,13 +103,12 @@ public class TwitchService
             TotalSubs = totalFollowers,
             SubsDynamic = subsDynamic
         };
-
     }
 
     private async Task<Video[]> GetVideos()
     {
         var monthAgo = DateTime.Today.AddMonths(-1);
-        var userId = await GetBroadcasterId("emongg");
+        var userId = await GetBroadcasterId(null);
         return (await _api.Helix.Videos.GetVideosAsync(
                 userId: userId,
                 period: Period.Month,
@@ -120,16 +119,18 @@ public class TwitchService
             .ToArray();
     }
 
-    private async Task<long> GetFollowers()
+    private async Task<long> GetFollowers(string? login)
     {
-        var userId = await GetBroadcasterId("emongg");
-        using HttpClient client = new HttpClient();
-        await RefreshAccessToken();
+        var userId = await GetBroadcasterId(login);
+        
+        HttpClient client = _httpClientFactory.CreateClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
         client.DefaultRequestHeaders.Add("Client-Id", CLIENT_ID);
+        
         var response = await client.GetAsync(new Uri($"https://api.twitch.tv/helix/channels/followers?broadcaster_id={userId}&access_token={AccessToken}"));
         string responseString = await response.Content.ReadAsStringAsync();
         var json = JObject.Parse(responseString);
+        
         return Int64.Parse(json["total"]!.ToString());  
     }
 
@@ -175,13 +176,13 @@ public class TwitchService
         return Math.Round((double)videos.Length / DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month), 2);
     }
 
-    private async Task<double> GetClipsMeanViews()
+    private async Task<double> GetClipsMeanViews(string? login)
     {
         var startDate = DateTime.Now.AddMonths(-1);
         var endDate = DateTime.Now;
 
         var clips = (await _api.Helix.Clips.GetClipsAsync(
-            broadcasterId: await GetBroadcasterId("emongg"),
+            broadcasterId: await GetBroadcasterId(login),
             first: 100,
             startedAt: startDate,
             endedAt: endDate,
@@ -195,49 +196,10 @@ public class TwitchService
     {
         return Math.Round(videos.Average(x => x.ViewCount));
     }
-
-    private async Task<string> GetBroadcasterId()
+    
+    private async Task<string> GetBroadcasterId(string? login)
     {
-        return (await _api.Helix.Users.GetUsersAsync(accessToken: AccessToken)).Users[0].Id;
+        return login != null ? (await _api.Helix.Users.GetUsersAsync(accessToken: AccessToken, logins: new() {login} )).Users[0].Id
+                : (await _api.Helix.Users.GetUsersAsync(accessToken: AccessToken )).Users[0].Id;
     }
-
-    private async Task<string> GetBroadcasterId(string login)
-    {
-        return (await _api.Helix.Users.GetUsersAsync(accessToken: AccessToken, logins: new() { login })).Users[0].Id;
-    }
-
-
-    public async Task webTest()
-    {
-        EventSubWebhooks e = new EventSubWebhooks();
-        e.OnStreamOnline += Console.WriteLine("hell");
-    }
-
-    private void Test(object sender, StreamOnlineArgs args)
-    {
-        args. 
-    }
-
-
-
-
-    // public async Task SetAccessToken(string code)
-    // {
-    //     var values = new Dictionary<string, string>()
-    //     {
-    //         { "client_id", CLIENT_ID },
-    //         { "client_secret", CLIENT_SECRET },
-    //         { "code", code },
-    //         { "grant_type", "authorization_code" },
-    //         { "redirect_uri", REDIRECT_URI },
-    //     };
-    //     
-    //     var content = new FormUrlEncodedContent(values);
-    //     
-    //     using HttpClient client = new HttpClient();
-    //     var response = await client.PostAsync("https://id.twitch.tv/oauth2/token", content);
-    //     var responseString = await response.Content.ReadAsStringAsync();
-    //     int a = 12;
-    //     
-    // }
 }

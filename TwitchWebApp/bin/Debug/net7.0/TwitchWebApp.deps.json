@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "TwitchWebApp/1.0.0": {
         "dependencies": {
-          "TwitchLib": "3.5.3"
+          "TwitchLib": "3.5.3",
+          "TwitchLib.EventSub.Webhooks": "2.3.0"
         },
         "runtime": {
           "TwitchWebApp.dll": {}
@@ -579,18 +580,29 @@
           }
         }
       },
-      "TwitchLib.EventSub.Core/2.0.0": {
+      "TwitchLib.EventSub.Core/2.3.0": {
         "runtime": {
           "lib/net7.0/TwitchLib.EventSub.Core.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.0"
+          }
+        }
+      },
+      "TwitchLib.EventSub.Webhooks/2.3.0": {
+        "dependencies": {
+          "TwitchLib.EventSub.Core": "2.3.0"
+        },
+        "runtime": {
+          "lib/net7.0/TwitchLib.EventSub.Webhooks.dll": {
+            "assemblyVersion": "2.3.0.0",
+            "fileVersion": "2.3.0.0"
           }
         }
       },
       "TwitchLib.EventSub.Websockets/0.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Logging": "6.0.0",
-          "TwitchLib.EventSub.Core": "2.0.0"
+          "TwitchLib.EventSub.Core": "2.3.0"
         },
         "runtime": {
           "lib/net7.0/TwitchLib.EventSub.Websockets.dll": {
@@ -1110,12 +1122,19 @@
       "path": "twitchlib.communication/1.0.4",
       "hashPath": "twitchlib.communication.1.0.4.nupkg.sha512"
     },
-    "TwitchLib.EventSub.Core/2.0.0": {
+    "TwitchLib.EventSub.Core/2.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1Rx5e5qgRKAzsBop26qhotNRGdYAAXdA+5GL2DYaZv0dz6fzbM0RN4hn2UZ8nznFiZ+XHyzMX1BeLvm02aPQpQ==",
-      "path": "twitchlib.eventsub.core/2.0.0",
-      "hashPath": "twitchlib.eventsub.core.2.0.0.nupkg.sha512"
+      "sha512": "sha512-+AEDG90Z2UtpW6BPXeJ28dpLuCpc71TWogkO+Lzn4dGAa7RGq9NG2zaj6Q4s1RL9e7hf58a152r9uYMFv8Jgtg==",
+      "path": "twitchlib.eventsub.core/2.3.0",
+      "hashPath": "twitchlib.eventsub.core.2.3.0.nupkg.sha512"
+    },
+    "TwitchLib.EventSub.Webhooks/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wJcqiLky6n2bIrSCApKPVYYfYqMh6zJYh7zQY+mq/SVyDlm8bnDsebMzPbBtYD/7Q6Y/7BP95tKUmSWe79mv3A==",
+      "path": "twitchlib.eventsub.webhooks/2.3.0",
+      "hashPath": "twitchlib.eventsub.webhooks.2.3.0.nupkg.sha512"
     },
     "TwitchLib.EventSub.Websockets/0.0.3": {
       "type": "package",

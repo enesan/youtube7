@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TWZZqlDwaVVVbcz7UsyAOim7ekRtkPDQf3Sa/gKtY/QyTYy9zuwcKQ0DXmnhYsVTkQgLw/WD1p9g8LjsyIZq9Q==",
+  "dgSpecHash": "gCcAfaSIQmBTLd5XbPPaf2E4GhsrepdoS1JohtceyUnE7fa+j3SvHoOx1uvB5B4s+EJRL9FRffEc1h+KtFpiww==",
   "success": true,
-  "projectFilePath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchWebApp\\TwitchWebApp.csproj",
+  "projectFilePath": "F:\\Repositories\\youtube7\\TwitchWebApp\\TwitchWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladr\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
@@ -77,7 +77,11 @@
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.core\\2.3.0\\twitchlib.eventsub.core.2.3.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.webhooks\\2.3.0\\twitchlib.eventsub.webhooks.2.3.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.eventsub.websockets\\0.0.3\\twitchlib.eventsub.websockets.0.0.3.nupkg.sha512",
-    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.pubsub\\3.2.6\\twitchlib.pubsub.3.2.6.nupkg.sha512"
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.pubsub\\3.2.6\\twitchlib.pubsub.3.2.6.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.8\\microsoft.netcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.8\\microsoft.windowsdesktop.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.8\\microsoft.aspnetcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.8\\microsoft.netcore.app.host.win-x64.7.0.8.nupkg.sha512"
   ],
   "logs": []
 }

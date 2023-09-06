@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TwitchApiProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+286e001db1b14baa3b0fc36b0f8e3c19fcb7a3e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("TwitchApiProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TwitchApiProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

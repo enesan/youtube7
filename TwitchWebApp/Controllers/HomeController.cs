@@ -9,8 +9,7 @@ public class HomeController : Controller
     
     public string Auth()
     {
-      //  _service.Authorize(); 
-        _service.AuthForFollowers(true).ConfigureAwait(false); 
+        _service.Authorize(true); 
         return  "Auth, i love you";
     }
     
@@ -22,11 +21,8 @@ public class HomeController : Controller
         return code ?? "There is no code in index";
     }
 
-    public async void GetB()
+    public async Task GetB()
     {
-        await _service.GetReport();
-        var b = 12;
+        var a = await _service.GetReport();
     }
-    
-    
 }

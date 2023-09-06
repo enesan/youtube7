@@ -345,11 +345,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\YoutubeApi7\\YoutubeApi7.csproj",
+      "projectUniqueName": "F:\\Repositories\\youtube7\\YoutubeApi7\\YoutubeApi7.csproj",
       "projectName": "YoutubeApi7",
-      "projectPath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\YoutubeApi7\\YoutubeApi7.csproj",
+      "projectPath": "F:\\Repositories\\youtube7\\YoutubeApi7\\YoutubeApi7.csproj",
       "packagesPath": "C:\\Users\\vladr\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\YoutubeApi7\\obj\\",
+      "outputPath": "F:\\Repositories\\youtube7\\YoutubeApi7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vladr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -372,6 +372,9 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "default"
       }
     },
     "frameworks": {
@@ -410,12 +413,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.8, 7.0.8]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.8, 7.0.8]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.8, 7.0.8]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.8, 7.0.8]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.6.23330.14\\RuntimeIdentifierGraph.json"
       }
     }
   }

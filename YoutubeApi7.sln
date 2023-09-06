@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchApiProject", "TwitchA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitchWebApp", "TwitchWebApp\TwitchWebApp.csproj", "{F5F17961-F1F5-474D-8148-96C6ED1A9A22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C92B6353-5413-4619-9284-87F8186E383C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5F17961-F1F5-474D-8148-96C6ED1A9A22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C92B6353-5413-4619-9284-87F8186E383C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C92B6353-5413-4619-9284-87F8186E383C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C92B6353-5413-4619-9284-87F8186E383C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C92B6353-5413-4619-9284-87F8186E383C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

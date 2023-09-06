@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj": {}
+    "F:\\Repositories\\youtube7\\TwitchApiProject\\TwitchApiProject.csproj": {}
   },
   "projects": {
-    "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj": {
+    "F:\\Repositories\\youtube7\\TwitchApiProject\\TwitchApiProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj",
+        "projectUniqueName": "F:\\Repositories\\youtube7\\TwitchApiProject\\TwitchApiProject.csproj",
         "projectName": "TwitchApiProject",
-        "projectPath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj",
+        "projectPath": "F:\\Repositories\\youtube7\\TwitchApiProject\\TwitchApiProject.csproj",
         "packagesPath": "C:\\Users\\vladr\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\obj\\",
+        "outputPath": "F:\\Repositories\\youtube7\\TwitchApiProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vladr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,9 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -60,12 +63,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.8, 7.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.8, 7.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.8, 7.0.8]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.8, 7.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.6.23330.14\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dMWhWj4Ov1FDkM1pcan8ItHvg3Op1GELjcczkDe0815T6CwH62/1nGB0UNYInJNfUS8QacoGmJHprB/F1IXTdw==",
+  "dgSpecHash": "0xt0LOh2GjFiBNJh0OElZAudJd/8Jvro7wI67LrDbRcWSSC4xEvhovazhTvB5Z4bu2nS+kgfi+7CV7ISQjpq+w==",
   "success": true,
-  "projectFilePath": "D:\\Users\\vladr\\RiderProjects\\YoutubeApi7\\TwitchApiProject\\TwitchApiProject.csproj",
+  "projectFilePath": "F:\\Repositories\\youtube7\\TwitchApiProject\\TwitchApiProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladr\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
@@ -64,7 +64,11 @@
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.helix\\3.10.0-preview-e47ba7f\\twitchlib.api.helix.3.10.0-preview-e47ba7f.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.api.helix.models\\3.10.0-preview-e47ba7f\\twitchlib.api.helix.models.3.10.0-preview-e47ba7f.nupkg.sha512",
     "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.enums\\3.3.1\\twitchlib.client.enums.3.3.1.nupkg.sha512",
-    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.models\\3.3.1\\twitchlib.client.models.3.3.1.nupkg.sha512"
+    "C:\\Users\\vladr\\.nuget\\packages\\twitchlib.client.models\\3.3.1\\twitchlib.client.models.3.3.1.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.8\\microsoft.netcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.8\\microsoft.windowsdesktop.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.8\\microsoft.aspnetcore.app.ref.7.0.8.nupkg.sha512",
+    "C:\\Users\\vladr\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.8\\microsoft.netcore.app.host.win-x64.7.0.8.nupkg.sha512"
   ],
   "logs": []
 }

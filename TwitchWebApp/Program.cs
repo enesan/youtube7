@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using TwitchWebApp;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
-
+builder.Services.AddHttpClient<ITwitchService, ITwitchService>();
 
 var app = builder.Build();
 
