@@ -26,6 +26,9 @@ public class HomeController : Controller
         return code ?? "There is no code in index";
     }
 
+    
+    
+
     public async Task GetB()
     {
         var a = await _service.GetReport();

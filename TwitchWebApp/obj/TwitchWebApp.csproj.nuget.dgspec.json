@@ -43,6 +43,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Google.Apis.Oauth2.v2": {
+              "target": "Package",
+              "version": "[1.61.0.1869, )"
+            },
+            "Google.Apis.YouTubeAnalytics.v2": {
+              "target": "Package",
+              "version": "[1.61.0.3106, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "TwitchLib": {
               "target": "Package",
               "version": "[3.5.3, )"

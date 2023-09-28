@@ -84,3 +84,10 @@ F:\Repositories\youtube7\TwitchWebApp\obj\Debug\net7.0\refint\TwitchWebApp.dll
 F:\Repositories\youtube7\TwitchWebApp\obj\Debug\net7.0\TwitchWebApp.pdb
 F:\Repositories\youtube7\TwitchWebApp\obj\Debug\net7.0\TwitchWebApp.genruntimeconfig.cache
 F:\Repositories\youtube7\TwitchWebApp\obj\Debug\net7.0\ref\TwitchWebApp.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.Auth.PlatformServices.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.Auth.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.Core.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.Oauth2.v2.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Google.Apis.YouTubeAnalytics.v2.dll
+F:\Repositories\youtube7\TwitchWebApp\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Google.dll
